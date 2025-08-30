@@ -2,6 +2,8 @@ package net.zypr.Fukurou.api.team;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.zypr.Fukurou.internal.team.ColorGameTeam;
+import net.zypr.Fukurou.internal.team.SimpleGameTeam;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

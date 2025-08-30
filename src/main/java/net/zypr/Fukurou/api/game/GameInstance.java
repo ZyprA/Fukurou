@@ -1,6 +1,7 @@
 package net.zypr.Fukurou.api.game;
 
 import net.zypr.Fukurou.internal.Timer;
+import net.zypr.Fukurou.internal.game.SimpleGameInstance;
 
 
 public interface GameInstance {

@@ -1,49 +1,18 @@
 package net.zypr.Fukurou.api.executor;
 
-import net.zypr.Fukurou.api.GameControllable;
 import net.zypr.Fukurou.api.game.GameInstance;
 import net.zypr.Fukurou.api.phase.GamePhase;
-import net.zypr.Fukurou.internal.GameScheduler;
 import net.zypr.Fukurou.internal.GamePhaseScheduler;
-import org.bukkit.plugin.java.JavaPlugin;
+import net.zypr.Fukurou.internal.GameScheduler;
 
-public class GameExecutor<T extends GameInstance> {
-    private GameScheduler<T> gameScheduler;
-    private final T gameInstance;
+public interface GameExecutor<T extends GameInstance>{
+    boolean start();
 
-    public GameExecutor(T gameInstance, JavaPlugin plugin, GamePhase<T> firstPhase) {
-        this.gameInstance = gameInstance;
-        this.gameScheduler = new GameScheduler<>(gameInstance, plugin, new GamePhaseScheduler<>(gameInstance, firstPhase, plugin));
-    }
+    T getGameInstance();
 
-    public GameExecutor(T gameInstance, JavaPlugin plugin, GamePhase<T> firstPhase, GameControllable gameControllable) {
-        this.gameInstance = gameInstance;
-        this.gameScheduler = new GameScheduler<>(gameInstance, plugin, new GamePhaseScheduler<>(gameInstance, firstPhase, plugin), gameControllable);
-    }
+    GameScheduler<T> getGameScheduler();
 
-    public boolean start() {
-        if (gameScheduler.isRunningGame()) {
-            return false;
-        }
-        this.gameScheduler.start();
-        return true;
-    }
+    GamePhaseScheduler<T> getGamePhaseScheduler();
 
-    public T getGameInstance() {
-        return this.gameInstance;
-    }
-
-    public GameScheduler<T> getGameScheduler() {
-        return this.gameScheduler;
-    }
-
-    public GamePhaseScheduler<T> getGamePhaseScheduler() {
-        return this.gameScheduler.getGamePhaseScheduler();
-    }
-
-    public GamePhase<T> getPhase() {
-        return this.gameScheduler.getGamePhaseScheduler().getPhase();
-    }
-
-
+    GamePhase<T> getPhase();
 }
