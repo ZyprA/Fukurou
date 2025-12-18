@@ -1,15 +1,15 @@
 package net.zypr.Fukurou.api.game;
 
 import net.zypr.Fukurou.internal.Timer;
-import net.zypr.Fukurou.internal.game.SimpleGameInstance;
 
 
-public interface GameInstance {
+public abstract class GameInstance {
 
-    static GameInstance of(Timer timer, Runnable gameTerminatedExecution) {
-        return new SimpleGameInstance(timer, gameTerminatedExecution);
+    private final Timer timer = new Timer();
+
+    public Timer getTimer() {
+        return this.timer;
     }
 
-    Timer getTimer();
-    int getGameTick();
+    public abstract int gameTick();
 }

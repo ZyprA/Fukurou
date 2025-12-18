@@ -32,7 +32,7 @@ public class GameScheduler<T extends GameInstance> {
 
     public void start() {
         isRunning = true;
-        int duration = gameInstance.getGameTick();
+        int duration = gameInstance.gameTick();
         if (gameInstance instanceof Listener listener) {
             plugin.getServer().getPluginManager().registerEvents(listener, plugin);
         }

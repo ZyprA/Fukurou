@@ -7,7 +7,7 @@ import net.zypr.Fukurou.api.phase.GamePhase;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class GameExecutorImpl<T extends GameInstance> implements GameExecutor<T> {
-    private GameScheduler<T> gameScheduler;
+    private final GameScheduler<T> gameScheduler;
     private final T gameInstance;
 
     public GameExecutorImpl(T gameInstance, JavaPlugin plugin, GamePhase<T> firstPhase) {

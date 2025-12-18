@@ -14,7 +14,7 @@ public class GamePhaseScheduler<T extends GameInstance>{
     private GamePhase<T> gamePhase;
     private boolean isInit = true;
     private boolean isTerminated = false;
-    private JavaPlugin plugin;
+    private final JavaPlugin plugin;
     private List<Listener> listeners = new ArrayList<>();
 
     public GamePhaseScheduler(T battleGame, GamePhase<T> firstPhase, JavaPlugin plugin) {
@@ -50,8 +50,8 @@ public class GamePhaseScheduler<T extends GameInstance>{
             gamePhase = nextGamePhase;
             isInit = true;
         }
-        gamePhase.timer().addTick(battleGame.getGameTick());
-        gamePhase.timer().updateClock();
+        gamePhase.getTimer().addTick(battleGame.gameTick());
+        gamePhase.getTimer().updateClock();
     }
 
 
